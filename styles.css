@@ -29,3 +29,7 @@ p {
 	/* 48 - 32 = 16 */
 	margin-left: -16px;
 	}
+.ace_scrollbar-v {
+	display: block !important;
+	overflow-y: scroll;
+	}

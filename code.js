@@ -1,5 +1,5 @@
 var appConsts = {
-	version: "0.4.0"
+	version: "0.4.0" 
 	}
 
 var theEditor;  //ace-editor object
@@ -73,16 +73,17 @@ function startEditor () {
 		console.log ("startEditor: savedEditorStatus == " + jsonStringify (savedEditorStatus));
 		}
 	theEditor = ace.edit ("idEditor");
+	var session = theEditor.getSession ();
 	theEditor.setTheme ("ace/theme/github");
 	theEditor.setShowPrintMargin (false);
-	theEditor.getSession ().setMode ("ace/mode/html");
-	theEditor.$blockScrolling = true;
+	session.setMode ("ace/mode/html");
+	session.setUseWrapMode (true);
+	theEditor.setOption ("indentedSoftWrap", false);
 	theEditor.container.style.lineHeight = 1.4;
 	theEditor.setFontSize ("13px");
 	
 	restoreEditorStatus ();
 	
-	var session = theEditor.getSession ();
 	session.on ("changeFold", function (e) {
 		editorChanged ();
 		});
